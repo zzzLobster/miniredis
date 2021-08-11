@@ -23,3 +23,15 @@ jobs:
 
     - name: Test
       run: make
+
+  build-alpine:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test
+      run: ls -al
+    - name: Build
+      run: docker run --rm -it --mount type=bind,source="$(pwd)",target=/opt/code golang:1.16-alpine 'cd /opt/code && go build -o miniredis ./main/main.go'
+    - name: Test2
+      run: ls -al
+
