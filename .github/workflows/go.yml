@@ -18,9 +18,8 @@ jobs:
       with:
         go-version: 1.16
 
-    - name: Build
+    - name: Build executable
       run: go build -o miniredis ./main/main.go
-    - name: List
-      run: test -f ./miniredis
+
     - name: Test
       run: make
