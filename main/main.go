@@ -17,8 +17,7 @@ func forever() {
 func main() {
   m := miniredis.NewMiniRedis()
   port, _ := strconv.Atoi(os.Args[1])
-  m.port = port
-  err := m.Start()
+  err := m.StartAddr(fmt.Sprintf("0.0.0.0:%d", port))
 
   if err != nil {
     log.Printf("Error %s", err)
